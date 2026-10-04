@@ -23,15 +23,14 @@ Existing point cloud anomaly detection benchmarks target industrial parts with s
 
 All results are obtained with a **single unified model per dataset** (multi-category setting).
 
+### Data Acquisition
+
 <p align="center">
-  <img src="assets/framework.png" alt="Overview of the GESA framework" width="800"/>
+  <img src="assets/hardware.png" alt="Data acquisition setup of the NaturalGrowth benchmark" width="900"/>
 </p>
+
 
 ## 📂 Datasets
-
-<p align="center">
-  <img src="assets/dataset.png" alt="Examples from the NaturalGrowth benchmark" width="800"/>
-</p>
 
 Our method is evaluated on the following benchmarks:
 - **NaturalGrowth** (ours, 31 agricultural categories)
@@ -85,6 +84,16 @@ Notes:
 - In test folders, files containing `positive` / `good` are normal samples; the others are defective.
 - During training, normals are read from the meshes, so `pcd/` and `obj/` (or `Real3D-AD-PCD/` and `Real3D-AD-PLY/`) must be siblings.
 - Real3D-AD training templates are very dense; downsample them with FPS (max 150k points) first:
+
+### Framework
+
+<p align="center">
+  <img src="assets/framework.png" alt="Overview of the GESA framework" width="900"/>
+</p>
+
+
+
+
 
 ```bash
 python tools/downsample_real3d.py --real3d_path data/Real3D-AD/Real3D-AD-PCD
@@ -149,6 +158,13 @@ sh experiments/Anomaly-ShapeNet/eval.sh 1 0
 ```
 
 `eval.sh` loads `saver.load_path` in `config.yaml` (default `weights/ckpt_best.pth.tar`). To evaluate your own run, set it to `checkpoints/ckpt_best.pth.tar`. The script reports per-category and mean **O-AUROC / O-AUPR** (object level) and **P-AUROC / P-AUPR** (point level).
+
+### Visualization
+
+<p align="center">
+  <img src="assets/visualization.png" alt="Qualitative anomaly localization results" width="900"/>
+</p>
+
 
 ## 📄 Citation
 ```bibtex
