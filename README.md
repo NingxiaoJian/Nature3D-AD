@@ -12,7 +12,7 @@ Official repository for the NeurIPS 2026 paper **"Nature3D-AD: Geometry-Aware Fe
 Existing point cloud anomaly detection benchmarks target industrial parts with standard shapes. Agricultural products grow naturally, so their shape, size and texture vary widely and "normal" is much harder to define. To fill this gap, we build **NaturalGrowth**, the first point cloud anomaly detection benchmark for agricultural products, and propose **GESA**, which injects geometric priors into both the position embedding and the attention mechanism.
 
 ## 📢 News
-- **[2026-10]** Code and benchmark meta files are released.
+
 - **[2026-09]** Our paper is accepted by *NeurIPS 2026*.
 
 ## 💡 Key Innovations
