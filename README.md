@@ -168,11 +168,13 @@ sh experiments/Anomaly-ShapeNet/eval.sh 1 0
 
 ## 📄 Citation
 ```bibtex
-@inproceedings{ning2026nature3dad,
-  title     = {Nature3D-AD: Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection},
-  author    = {Ning, Jian and others},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year      = {2026}
+@inproceedings{
+anonymous2026naturedad,
+title={Nature3D-{AD}: Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection},
+author={Jian Ning, Qin Zou, Linchun Wu, Kunmo Li, Chi Chen, Zhen Dong, Bisheng Yang, Qingquan Li},
+booktitle={The Fortieth Annual Conference on Neural Information Processing Systems},
+year={2026},
+url={https://openreview.net/forum?id=WWUQ1mmWsN}
 }
 ```
 
