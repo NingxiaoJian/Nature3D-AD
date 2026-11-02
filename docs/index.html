@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nature3D-AD | NeurIPS 2026</title>
+  <meta name="description" content="Nature3D-AD: Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection. NeurIPS 2026.">
+  <meta property="og:title" content="Nature3D-AD (NeurIPS 2026)">
+  <meta property="og:description" content="NaturalGrowth: the first point cloud anomaly detection benchmark for agricultural products, and GESA, a geometry-aware detector.">
+  <meta property="og:image" content="https://ningxiaojian.github.io/Nature3D-AD/static/images/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-brand">Nature3D-AD</a>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#benchmark">Benchmark</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a href="#bibtex">BibTeX</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg" style="background-image: url('static/images/cover.jpg');"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <span class="venue-pill"><i class="fas fa-award"></i> NeurIPS 2026</span>
+    <h1 class="hero-title"><span class="grad">Nature3D-AD</span></h1>
+    <p class="hero-subtitle">Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection</p>
+    <p class="authors">
+      <span>Jian Ning<sup>1</sup></span>
+      <span>Qin Zou<sup>1,2,*</sup></span>
+      <span>Linchun Wu<sup>1</sup></span>
+      <span>Kunmo Li<sup>3</sup></span>
+      <span>Chi Chen<sup>2,4</sup></span>
+      <span>Zhen Dong<sup>4</sup></span>
+      <span>Bisheng Yang<sup>4</sup></span>
+      <span>Qingquan Li<sup>4,5</sup></span>
+    </p>
+    <div class="affil">
+      <span><sup>1</sup>School of Computer Science, Wuhan University</span>
+      <span><sup>2</sup>School of Robotics, Wuhan University</span>
+      <span><sup>3</sup>School of Computer Science and Technology, Dalian University of Technology</span>
+      <span><sup>4</sup>State Key Laboratory LIESMARS, Wuhan University</span>
+      <span><sup>5</sup>Guangdong Key Laboratory of Urban Informatics, Shenzhen University</span>
+    </div>
+    <p class="corr"><sup>*</sup>Corresponding author</p>
+
+    <div class="btn-row">
+      <a class="btn" href="https://openreview.net/forum?id=WWUQ1mmWsN" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+      <a class="btn" href="https://github.com/NingxiaoJian/Nature3D-AD" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+      <!-- TODO: set the dataset link and remove is-disabled -->
+      <a class="btn is-disabled" title="Coming soon"><i class="fas fa-database"></i> Dataset <small>soon</small></a>
+      <a class="btn btn-ghost" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
+    </div>
+  </div>
+
+  <figure class="teaser">
+    <img src="static/images/cover.jpg" alt="Real 3D scans from the NaturalGrowth benchmark">
+    <figcaption>Real 3D scans of agricultural products from <b>NaturalGrowth</b>, covering 31 categories with large intra-class shape variation.</figcaption>
+  </figure>
+</header>
+
+<section class="stats">
+  <div class="stat reveal"><span class="stat-num" data-target="31">31</span><span class="stat-label">Agricultural categories</span></div>
+  <div class="stat reveal"><span class="stat-num" data-target="1477">1,477</span><span class="stat-label">Real 3D scans</span></div>
+  <div class="stat reveal"><span class="stat-num" data-target="155" data-suffix="K">155K</span><span class="stat-label">Points per scan (avg.)</span></div>
+  <div class="stat reveal"><span class="stat-num" data-target="3">3</span><span class="stat-label">Benchmarks, best avg. O-AUROC</span></div>
+</section>
+
+<section class="section" id="overview">
+  <div class="container narrow">
+    <p class="eyebrow">Overview</p>
+    <h2 class="section-title">When "normal" is not a template</h2>
+    <div class="abstract reveal">
+      <p>Existing point cloud anomaly detection benchmarks are designed for industrial parts, where normal samples share standard geometric shapes. Agricultural products grow naturally: their shape, size and texture vary widely, so "normal" is far less well-defined, and industrial benchmarks and methods do not transfer well.</p>
+      <p>We build <b>NaturalGrowth</b>, the first point cloud anomaly detection benchmark for agricultural products, and propose <b>GESA</b>, which injects geometric priors at two levels. <b>ASPE</b> fuses local curvature and density into the position embedding to enhance the perception of anomalous regions, and <b>GAA</b> adds geometric biases and a spectral branch to attention to strengthen local structure modeling. Experiments on NaturalGrowth, Real3D-AD and Anomaly-ShapeNet show competitive performance with a single unified model per dataset.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="benchmark">
+  <div class="container">
+    <p class="eyebrow">Benchmark</p>
+    <h2 class="section-title">NaturalGrowth</h2>
+    <p class="lead narrow">31 categories of common agricultural products, scanned with an industrial structured-light scanner on a turntable for full 360&deg; coverage. Defects are real: natural ones such as wormholes and rot, and physical damage from picking and transport. Every defective sample has point-level ground truth.</p>
+    <figure class="card reveal">
+      <img src="static/images/hardware.png" alt="Data acquisition setup of NaturalGrowth" loading="lazy">
+      <figcaption>Data acquisition pipeline.</figcaption>
+    </figure>
+    <div class="chips reveal" id="category-chips"></div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container">
+    <p class="eyebrow">Method</p>
+    <h2 class="section-title">GESA: geometry priors in embedding and attention</h2>
+    <div class="feature-grid">
+      <div class="feature reveal">
+        <div class="feature-icon"><i class="fas fa-wave-square"></i></div>
+        <h3>ASPE</h3>
+        <p>Anomaly-Sensitive Position Embedding. Local curvature and density modulate a Fourier position embedding, so potentially anomalous regions get a stronger positional signal.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
+        <h3>GAA</h3>
+        <p>Geometry-Aware Attention. Distance and normal-similarity biases are added to the attention scores, making attention aware of 3D structure.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon"><i class="fas fa-chart-area"></i></div>
+        <h3>Spectral branch</h3>
+        <p>An FFT-domain branch is fused with spatial attention. Global frequency patterns stay robust to the irregular shapes of natural products.</p>
+      </div>
+    </div>
+    <figure class="card wide reveal">
+      <a href="static/images/framework.png" target="_blank" rel="noopener">
+        <img src="static/images/framework.png" alt="Overview of the GESA framework" loading="lazy">
+      </a>
+      <figcaption>Overview of GESA. A frozen Point-MAE backbone extracts group features; stacked GAA encoder/decoder layers with ASPE reconstruct normal features, and the reconstruction error gives point- and object-level anomaly scores. Click to enlarge.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section alt" id="results">
+  <div class="container">
+    <p class="eyebrow">Results</p>
+    <h2 class="section-title">One model per dataset, best average O-AUROC</h2>
+    <div class="result-grid">
+      <div class="result-card reveal">
+        <span class="result-name">NaturalGrowth</span>
+        <span class="result-num">0.853</span>
+        <span class="result-gain"><i class="fas fa-arrow-up"></i> 6.1% over 2nd best</span>
+        <div class="bar"><span style="--w: 85.3%"></span></div>
+      </div>
+      <div class="result-card reveal">
+        <span class="result-name">Real3D-AD</span>
+        <span class="result-num">0.887</span>
+        <span class="result-gain"><i class="fas fa-arrow-up"></i> 8.3% over 2nd best</span>
+        <div class="bar"><span style="--w: 88.7%"></span></div>
+      </div>
+      <div class="result-card reveal">
+        <span class="result-name">Anomaly-ShapeNet</span>
+        <span class="result-num">0.933</span>
+        <span class="result-gain"><i class="fas fa-arrow-up"></i> 7.2% over 2nd best</span>
+        <div class="bar"><span style="--w: 93.3%"></span></div>
+      </div>
+    </div>
+    <h3 class="sub-title">Ablation on NaturalGrowth (O-AUROC)</h3>
+    <div class="ablation reveal">
+      <div class="abl-row"><span>Baseline Transformer</span><div class="bar"><span style="--w: 79.2%"></span></div><b>0.792</b></div>
+      <div class="abl-row"><span>+ ASPE</span><div class="bar"><span style="--w: 81.3%"></span></div><b>0.813</b></div>
+      <div class="abl-row"><span>+ Geometric bias</span><div class="bar"><span style="--w: 80.4%"></span></div><b>0.804</b></div>
+      <div class="abl-row"><span>+ Spectral branch</span><div class="bar"><span style="--w: 82.4%"></span></div><b>0.824</b></div>
+      <div class="abl-row best"><span>Full GESA</span><div class="bar"><span style="--w: 85.3%"></span></div><b>0.853</b></div>
+    </div>
+    <p class="note">Bars start at 0. Each module improves over the baseline; the three are complementary.</p>
+
+    <h3 class="sub-title">Qualitative results</h3>
+    <figure class="card wide reveal">
+      <a href="static/images/visualization.jpg" target="_blank" rel="noopener">
+        <img src="static/images/visualization.jpg" alt="Qualitative anomaly localization results" loading="lazy">
+      </a>
+      <figcaption>Point-level anomaly localization on representative samples, compared with the ground truth. Click to enlarge.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container narrow">
+    <p class="eyebrow">Citation</p>
+    <h2 class="section-title">BibTeX</h2>
+    <div class="bib reveal">
+      <button class="copy-btn" id="copy-bib" type="button"><i class="far fa-copy"></i> Copy</button>
+<pre id="bib-text">@inproceedings{ning2026nature3dad,
+  title     = {Nature3D-{AD}: Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection},
+  author    = {Jian Ning and Qin Zou and Linchun Wu and Kunmo Li and Chi Chen and Zhen Dong and Bisheng Yang and Qingquan Li},
+  booktitle = {The Fortieth Annual Conference on Neural Information Processing Systems},
+  year      = {2026},
+  url       = {https://openreview.net/forum?id=WWUQ1mmWsN}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Template inspired by <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Content licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</footer>
+
+<script src="static/js/main.js"></script>
+</body>
+</html>
