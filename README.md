@@ -1,6 +1,8 @@
 # Nature3D-AD: Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection
 
 <p align="center">
+  <a href="https://ningxiaojian.github.io/Nature3D-AD/"><img alt="Project Page" src="https://img.shields.io/badge/Project-Page-2f8f4e?logo=googlechrome&logoColor=white"></a>
+  <a href="https://openreview.net/forum?id=WWUQ1mmWsN"><img alt="Paper" src="https://img.shields.io/badge/Paper-OpenReview-8c1b13"></a>
   <a href="#-news"><img alt="NeurIPS 2026" src="https://img.shields.io/badge/NeurIPS-2026-purple"></a>
   <a href="#%EF%B8%8F-installation"><img alt="Python" src="https://img.shields.io/badge/python-3.10-blue"></a>
   <a href="#%EF%B8%8F-installation"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.4.0-red"></a>
@@ -8,6 +10,12 @@
 </p>
 
 Official repository for the NeurIPS 2026 paper **"Nature3D-AD: Geometry-Aware Feature Learning for Natural-Growth 3D Anomaly Detection"**.
+
+<p align="center">
+  🌐 <a href="https://ningxiaojian.github.io/Nature3D-AD/"><b>Project Page</b></a> &nbsp;|&nbsp;
+  📄 <a href="https://openreview.net/forum?id=WWUQ1mmWsN"><b>Paper</b></a> &nbsp;|&nbsp;
+  📦 <a href="https://ningxiaojian.github.io/Nature3D-AD/"><b>Dataset</b></a>
+</p>
 
 Existing point cloud anomaly detection benchmarks target industrial parts with standard shapes. Agricultural products grow naturally, so their shape, size and texture vary widely and "normal" is much harder to define. To fill this gap, we build **NaturalGrowth**, the first point cloud anomaly detection benchmark for agricultural products, and propose **GESA**, which injects geometric priors into both the position embedding and the attention mechanism.
 
@@ -33,7 +41,7 @@ All results are obtained with a **single unified model per dataset** (multi-cate
 ## 📂 Datasets
 
 Our method is evaluated on the following benchmarks:
-- **NaturalGrowth** (ours, 31 agricultural categories)
+- **NaturalGrowth** (ours, 31 agricultural categories): download from our [project page](https://ningxiaojian.github.io/Nature3D-AD/)
 - **Real3D-AD** ([official repo](https://github.com/M-3LAB/Real3D-AD))
 - **Anomaly-ShapeNet** ([HuggingFace](https://huggingface.co/datasets/Chopper233/Anomaly-ShapeNet), use `Anomaly-ShapeNet-v2/dataset/{pcd,obj}`)
 
@@ -191,3 +199,4 @@ We thank the authors of the following works for making their code publicly avail
 ## 📜 License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
